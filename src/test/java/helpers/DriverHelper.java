@@ -19,9 +19,9 @@ public class DriverHelper {
                 config.webRemoteDriverPassword());
     }
 
-    public static boolean isRemoteWebDriver() {
+   /* public static boolean isRemoteWebDriver() {
         return !config.webRemoteDriverUrl().equals("");
-    }
+    }*/
 
     public static void configureDriver() {
         addListener("AllureSelenide", new AllureSelenide());
@@ -30,7 +30,7 @@ public class DriverHelper {
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
-        if (isRemoteWebDriver()) {
+        if (config.webRemoteDriverUrl()!=null) {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
             Configuration.remote = getWebRemoteDriver();
