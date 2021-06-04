@@ -8,8 +8,4 @@ public interface DriverConfig extends Config {
     String webBrowser();
 
      String webRemoteDriverUrl();
-
-    String webRemoteDriverUser();
-
-    String webRemoteDriverPassword();
 }
