@@ -12,13 +12,6 @@ public class DriverHelper {
 
    private static DriverConfig config = ConfigFactory.newInstance().create(DriverConfig.class, System.getProperties());
 
-    public static String getWebRemoteDriver() {
-        // https://%s:%s@selenoid.autotests.cloud/wd/hub/
-        return String.format(config.webRemoteDriverUrl(),
-                config.webRemoteDriverUser(),
-                config.webRemoteDriverPassword());
-    }
-
    /* public static boolean isRemoteWebDriver() {
         return !config.webRemoteDriverUrl().equals("");
     }*/
@@ -33,7 +26,7 @@ public class DriverHelper {
         if (config.webRemoteDriverUrl()!=null) {
             capabilities.setCapability("enableVNC", true);
             capabilities.setCapability("enableVideo", true);
-            Configuration.remote = getWebRemoteDriver();
+            Configuration.remote = config.webRemoteDriverUrl();
         }
 
         Configuration.browserCapabilities = capabilities;
